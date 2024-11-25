@@ -1,0 +1,96 @@
+function picture {
+    echo "digraph MyPlan {" > ./LR3/task.dot
+    echo "node [shape="box", style="filled"];" >> ./LR3/task.dot
+    echo "LR4->"Info"" >> ./LR3/task.dot
+    echo "LR4->"A1";" >> ./LR3/task.dot
+    echo "LR4->"A2";" >> ./LR3/task.dot
+    echo "LR4->"A3";" >> ./LR3/task.dot
+    echo ""Info"->"Personal";" >> ./LR3/task.dot
+    echo ""Info"->"University";" >> ./LR3/task.dot
+    echo ""Info"->"Hobby";" >> ./LR3/task.dot
+    for ((i=0, t=2; i<3; i=i+1)); do
+        random1=$RANDOM
+        let "random1 %= $t"
+        case $i in
+            0 )
+                echo ""A1"->"B1";" >> ./LR3/task.dot
+                case $random1 in
+                    1 ) echo ""A1"->"B2";" >> ./LR3/task.dot ;;
+                    2 )
+                        echo ""A1"->"B2";" >> ./LR3/task.dot
+                        echo ""A1"->"B3";" >> ./LR3/task.dot
+                        let t=t-1
+                        ;;
+                esac
+                ;;
+            1 )
+                case $random1 in
+                    1 ) echo ""A2"->"C1";" >> ./LR3/task.dot ;;
+                    2 )
+                        echo ""A2"->"C1";" >> ./LR3/task.dot
+                        echo ""A2"->"C2";" >> ./LR3/task.dot
+                        let t=t-1
+                        ;;
+                esac
+                ;;
+            2 )
+                case $random1 in
+                    1 ) echo ""A3"->"D1";" >> ./LR3/task.dot ;;
+                    2 )
+                        echo ""A3"->"D1";" >> ./LR3/task.dot
+                        echo ""A3"->"D2";" >> ./LR3/task.dot
+                        ;;
+                esac 
+                ;;
+        esac
+    done
+    echo "}" >> ./LR3/task.dot
+    dot -Tpng -O ./LR3/task.dot
+}
+echo "В данном каталоге создаётся система каталогов и файлов для выполнения лабораторных работ:"
+pwd
+mkdir LR2
+declare -a task2
+file="task2"
+i=0
+while read -r line; do
+    task2[i]="$line"
+    let i=i+1
+done <$file
+range=${#task2[@]}
+random1=$(( $RANDOM % $range ))
+echo "${task2[$random1]}" > ./LR2/command.txt
+random2=$(( $RANDOM % $range ))
+echo "${task2[$random2]}" >> ./LR2/command.txt
+mkdir LR3
+file="task3"
+declare -a task3
+picture
+mkdir LR4
+declare -a task4
+file="task4"
+i=0
+while read -r line; do
+    task4[i]="$line"
+    let i=i+1
+done <$file
+range=${#task4[@]}
+random=$(( $RANDOM % $range ))
+echo "${task4[$random]}" > ./LR4/task.txt
+mkdir LR6
+mkdir LR7
+declare -a task7
+file="task7"
+i=0
+while read -r line; do
+    task7[i]="$line"
+    let i=i+1
+done <$file
+range=${#task7[@]}
+random=$(( $RANDOM % $range ))
+echo "${task7[$random]}" > ./LR7/task.txt
+echo "Система файлов и каталогов создана"
+cat password.txt | sudo -S chattr +i ./LR3/task.dot
+cat password.txt | sudo -S chattr +i ./LR2/command.txt
+cat password.txt | sudo -S chattr +i ./LR4/task.txt
+cat password.txt | sudo -S chattr +i ./LR7/task.txt

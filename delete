@@ -1,0 +1,9 @@
+cat password.txt | sudo -S chattr -i ./LR3/task.dot
+cat password.txt | sudo -S chattr -i ./LR2/command.txt
+cat password.txt | sudo -S chattr -i ./LR4/task.txt
+cat password.txt | sudo -S chattr -i ./LR7/task.txt
+rm -r LR2
+rm -r LR3
+rm -r LR4
+rm -r LR6
+rm -r LR7
