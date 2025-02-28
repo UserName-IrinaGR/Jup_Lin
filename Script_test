@@ -1,11 +1,12 @@
+#!/bin/bash
 function picture {
-    mkdir ./tree
-    mkdir ./tree/A1
-    mkdir ./tree/A2
-    mkdir ./tree/A3
-    mkdir ./tree/Personal
-    mkdir ./tree/University
-    mkdir ./tree/Hobby
+    mkdir ./Tree
+    mkdir ./Tree/A1
+    mkdir ./Tree/A2
+    mkdir ./Tree/A3
+    mkdir ./Tree/Personal
+    mkdir ./Tree/University
+    mkdir ./Tree/Hobby
     for ((i=0, t=3; i<3; i=i+1)); do
         if [ $t == 0 ]; then
         break
@@ -14,21 +15,21 @@ function picture {
         let "random1 %= $t"
         case $i in
             0 )
-                mkdir ./tree/A1/B1
+                mkdir ./Tree/A1/B1
                 case $random1 in
                     0 ) 
-                        mkdir ./tree/A1/B2
-                        echo "Удалите каталог В2." >> ./Task_4.txt
+                        mkdir ./Tree/A1/B2
+                        echo "Удалите каталог В2." >> ./Task_4
                         ;;
                     1 )
-                        mkdir ./tree/A1/B2
-                        mkdir ./tree/A1/B3
+                        mkdir ./Tree/A1/B2
+                        mkdir ./Tree/A1/B3
                         random2=$RANDOM
                         let "random2 %= 3"
                         case $random2 in
-                        0 ) echo "Удалите каталог В1." >> ./Task_4.txt ;;
-                        1 ) echo "Удалите каталог В2." >> ./Task_4.txt ;;
-                        2 ) echo "Удалите каталог В2." >> ./Task_4.txt ;;
+                        0 ) echo "Удалите каталог В1." >> ./Task_4 ;;
+                        1 ) echo "Удалите каталог В2." >> ./Task_4 ;;
+                        2 ) echo "Удалите каталог В2." >> ./Task_4 ;;
                         esac
                         let t=t-1
                         ;;
@@ -38,30 +39,30 @@ function picture {
             1 )
                 case $random1 in
                     0 ) 
-                        mkdir ./tree/A2/C1
+                        mkdir ./Tree/A2/C1
                         ;;
                     1 )
-                        mkdir ./tree/A2/C1
-                        mkdir ./tree/A2/C2
+                        mkdir ./Tree/A2/C1
+                        mkdir ./Tree/A2/C2
                         let t=t-2
                         ;;
                     2 )  
-                        mkdir ./tree/A2/C1
-                        mkdir ./tree/A2/C2
-                        mkdir ./tree/A2/C2/C3
+                        mkdir ./Tree/A2/C1
+                        mkdir ./Tree/A2/C2
+                        mkdir ./Tree/A2/C2/C3
                         let t=t-2
                         ;;
                     3 )
-                        mkdir ./tree/A2/C1
-                        mkdir ./tree/A2/C2
-                        mkdir ./tree/A2/C1/C3
-                        mkdir ./tree/A2/C2/C4
+                        mkdir ./Tree/A2/C1
+                        mkdir ./Tree/A2/C2
+                        mkdir ./Tree/A2/C1/C3
+                        mkdir ./Tree/A2/C2/C4
                         random2=$RANDOM
                         let "random2 %= 3"
                         case $random2 in
-                        0 ) echo "Удалите каталог C1." >> ./Task_4.txt ;;
-                        1 ) echo "Удалите каталог C2." >> ./Task_4.txt ;;
-                        2 ) echo "Удалите каталог C2." >> ./Task_4.txt ;;
+                        0 ) echo "Удалите каталог C1." >> ./Task_4 ;;
+                        1 ) echo "Удалите каталог C2." >> ./Task_4 ;;
+                        2 ) echo "Удалите каталог C2." >> ./Task_4 ;;
                         esac
                         let t=t-3
                         ;;  
@@ -70,38 +71,38 @@ function picture {
             2 )
                 case $t in
                     1 ) 
-                        mkdir ./tree/A3/D1
+                        mkdir ./Tree/A3/D1
                         ;;
                     2 )
-                        mkdir ./tree/A3/D1
-                        mkdir ./tree/A3/D1/D2
+                        mkdir ./Tree/A3/D1
+                        mkdir ./Tree/A3/D1/D2
                         ;;
                     3 )
-                        mkdir ./tree/A3/D1
-                        mkdir ./tree/A3/D2
-                        mkdir ./tree/A3/D3
+                        mkdir ./Tree/A3/D1
+                        mkdir ./Tree/A3/D2
+                        mkdir ./Tree/A3/D3
                         ;;
                     4 )
-                        mkdir ./tree/A3/D1
-                        mkdir ./tree/A3/D3
-                        mkdir ./tree/A3/D2
+                        mkdir ./Tree/A3/D1
+                        mkdir ./Tree/A3/D3
+                        mkdir ./Tree/A3/D2
                         random2=$RANDOM
                         let "random2 %= 3"
                         case $random2 in
-                        0 ) echo "Удалите каталог D1." >> ./Task_4.txt ;;
-                        1 ) echo "Удалите каталог D2." >> ./Task_4.txt ;;
-                        2 ) echo "Удалите каталог D2." >> ./Task_4.txt ;;
+                        0 ) echo "Удалите каталог D1." >> ./Task_4 ;;
+                        1 ) echo "Удалите каталог D2." >> ./Task_4 ;;
+                        2 ) echo "Удалите каталог D2." >> ./Task_4 ;;
                         esac
                         ;;
                 esac 
                 ;;
         esac
     done
-    tree -d ./tree > ./tree.txt
-    rm -R ./tree
+    tree -d ./Tree > ./tree
+    rm -R ./Tree
 }
 function Task_4 {
-    echo "Выведите содержимое каталога А1. В каталоге А1 создайте каталоги В5 и В6." >> ./Task_4.txt
+    echo "Выведите содержимое каталога А1. В каталоге А1 создайте каталоги В5 и В6." >> ./Task_4
 }
 function Task_6 {
     random1=$RANDOM
@@ -125,13 +126,13 @@ function Task_7 {
     let "random1 %= $t"
     case $random1 in
     0 )
-        echo "Объедините файлы name.txt и hobby.txt в файле all.txt каталога Info. Выведите его содержимое на экран." > Task_7.txt
+        echo "Объедините файлы name.txt и hobby.txt в файле all.txt каталога Info. Выведите его содержимое на экран." > Task_7
         ;;
     1 )
-        echo "Объедините файлы name.txt и info.txt в файле all.txt каталога Info. Выведите его содержимое на экран." > Task_7.txt
+        echo "Объедините файлы name.txt и info.txt в файле all.txt каталога Info. Выведите его содержимое на экран." > Task_7
         ;;
     2 )
-        echo "Объедините файлы info.txt и hobby.txt в файле all.txt каталога Info. Выведите его содержимое на экран." > Task_7.txt
+        echo "Объедините файлы info.txt и hobby.txt в файле all.txt каталога Info. Выведите его содержимое на экран." > Task_7
         ;;
     esac
 }
@@ -141,13 +142,13 @@ function Task_8 {
     let "random1 %= $t"
     case $random1 in
     0 )
-        echo "Скопируйте файл info.txt в каталог Info. Выведите содержимое каталога на экран." > Task_8.txt
+        echo "Скопируйте файл info.txt в каталог Info. Выведите содержимое каталога на экран." > Task_8
         ;;
     1 )
-        echo "Скопируйте файл name.txt в каталог Info. Выведите содержимое каталога на экран." > Task_8.txt
+        echo "Скопируйте файл name.txt в каталог Info. Выведите содержимое каталога на экран." > Task_8
         ;;
     2 )
-        echo "Скопируйте файл hobby.txt в каталог Info. Выведите содержимое каталога на экран." > Task_8.txt
+        echo "Скопируйте файл hobby.txt в каталог Info. Выведите содержимое каталога на экран." > Task_8
         ;;
     esac
 }
@@ -157,22 +158,22 @@ function Task_9 {
     let "random1 %= $t"
     case $random1 in
     0 )
-        echo "Запретите всем пользователям изменять файл all.txt и читать файл info.txt. Выведите содержимое каталога Info с ключом, позволяющем посмотреть права доступа." > Task_9.txt
+        echo "Запретите всем пользователям изменять файл all.txt и читать файл info.txt. Выведите содержимое каталога Info с ключом, позволяющем посмотреть права доступа." > Task_9
         ;;
     1 )
-        echo "Запретите всем пользователям читать файл all.txt и изменять файл info.txt. Выведите содержимое каталога Info с ключом, позволяющем посмотреть права доступа." > Task_9.txt
+        echo "Запретите всем пользователям читать файл all.txt и изменять файл info.txt. Выведите содержимое каталога Info с ключом, позволяющем посмотреть права доступа." > Task_9
         ;;
     2 )
-        echo "Запретите всем пользователям изменять файл all.txt и читать файл info.txt. Выведите содержимое каталога Info с ключом, позволяющем посмотреть права доступа." > Task_9.txt
+        echo "Запретите всем пользователям изменять файл all.txt и читать файл info.txt. Выведите содержимое каталога Info с ключом, позволяющем посмотреть права доступа." > Task_9
         ;;
     3 )
-        echo "Запретите всем пользователям исполнять файл all.txt и читать файл info.txt. Выведите содержимое каталога Info с ключом, позволяющем посмотреть права доступа." > Task_9.txt
+        echo "Запретите всем пользователям исполнять файл all.txt и читать файл info.txt. Выведите содержимое каталога Info с ключом, позволяющем посмотреть права доступа." > Task_9
         ;;
     4 )
-        echo "Запретите всем пользователям изменять файл all.txt и исполнять файл info.txt. Выведите содержимое каталога Info с ключом, позволяющем посмотреть права доступа." > Task_9.txt
+        echo "Запретите всем пользователям изменять файл all.txt и исполнять файл info.txt. Выведите содержимое каталога Info с ключом, позволяющем посмотреть права доступа." > Task_9
         ;;
     5 )
-        echo "Запретите всем пользователям исполнять файл all.txt и изменять файл info.txt. Выведите содержимое каталога Info с ключом, позволяющем посмотреть права доступа." > Task_9.txt
+        echo "Запретите всем пользователям исполнять файл all.txt и изменять файл info.txt. Выведите содержимое каталога Info с ключом, позволяющем посмотреть права доступа." > Task_9
         ;;
     esac
 }
@@ -188,6 +189,11 @@ then
     Task_7
     Task_8
     Task_9
+    sudo chattr +i ./Task_4
+    sudo chattr +i ./Task_7
+    sudo chattr +i ./Task_9
+    sudo chattr +i ./Task_8
+    sudo chattr +i ./tree
     echo "Система файлов и каталогов создана."
 else
     echo "Ошибка. Каталог Student уже существует, удалите или перенесите его, чтобы система файлов и каталогов была создана."

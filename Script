@@ -1,3 +1,4 @@
+#!/bin/bash
 function picture {
     mkdir ./LR/LR3/Info
     mkdir ./LR/LR3/A1
@@ -239,6 +240,24 @@ function task_4 {
 }
 if ! [ -d ./LR ] 
 then
+    echo -n "Вы хотите установить пакет tree? Проверьте подключение к интернету! (0 - нет; 1 - да): "
+    read my_var
+    if [ "$my_var" -eq 1 ]; then 
+        echo "Выполняется установка. Не закрывайте терминал и не завершайте работу устройства до окончания процесса."
+        sudo apt update
+        sudo apt install tree
+    else 
+        apt list --installed tree
+        echo "Если пакет не установлен, дальнейшее исполнение скрипта приведет к ошибке, вы уверены, что хотите продолжить? (0 - нет; 1 - да)"
+        read my_var_1
+        if [ "$my_var_1" -eq 0 ]; then 
+            echo "Выполнение остановлено."
+        else 
+            echo "Выполняется установка. Не закрывайте терминал и не завершайте работу устройства до окончания процесса."
+            sudo apt update
+            sudo apt install tree
+        fi
+    fi
     mkdir LR
     cd ./LR
     echo "В данном каталоге создаётся система каталогов и файлов для выполнения лабораторных работ:"
@@ -281,11 +300,11 @@ then
     echo -n "Пользуясь командами терминала, установите пакет " > ./LR/LR7/task.txt
     echo -n "${task7[$random]}" >> ./LR/LR7/task.txt
     echo -n ". Каково назначение этого пакета?" >> ./LR/LR7/task.txt
-#    cat password.txt | sudo -S chattr +i ./LR/LR3/task.txt
-#    cat password.txt | sudo -S chattr +i ./LR/LR3/command2.txt
-#    cat password.txt | sudo -S chattr +i ./LR/LR2/command1.txt
-#    cat password.txt | sudo -S chattr +i ./LR/LR4/task.txt
-#    cat password.txt | sudo -S chattr +i ./LR/LR7/task.txt
+    sudo chattr +i ./LR/LR3/task.txt
+    sudo chattr +i ./LR/LR3/command2.txt
+    sudo chattr +i ./LR/LR2/command1.txt
+    sudo chattr +i ./LR/LR4/task.txt
+    sudo chattr +i ./LR/LR7/task.txt
     echo "Система файлов и каталогов создана."
 else
     echo "Ошибка. Каталог LR уже существует, удалите или перенесите его, чтобы система файлов и каталогов была создана."
