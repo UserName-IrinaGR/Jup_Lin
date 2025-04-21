@@ -86,7 +86,7 @@ function picture {
     rm -R ./LR/LR3/Hobby
 }
 function fun_task3 {
-    declare -a task3
+    declare -a task3 
     file="task3"
     i=0
     while read -r line; do
@@ -97,10 +97,12 @@ function fun_task3 {
     random1=$(( $RANDOM % $range ))
     echo "${task3[$random1]}" > ./LR/LR3/c1.txt
     random2=$(( $RANDOM % $range ))
-    while [ $random1 -eq $random2 ]
-    do
+    if [ $random1 -eq $random2 ]; then
         random2=$(( RANDOM % range ))
-    done
+        if [ $random1 -eq $random2 ]; then
+            random2=$((random1%range))
+        fi
+    fi
     echo "${task3[$random2]}" >> ./LR/LR3/c2.txt
     declare -a task1
     file="task1"
@@ -113,10 +115,12 @@ function fun_task3 {
     random1=$(( $RANDOM % $range ))
     echo "${task1[$random1]}" > ./LR/LR3/command2.txt
     random2=$(( $RANDOM % $range ))
-    while [ $random1 -eq $random2 ]
-    do
+    if [ $random1 -eq $random2 ]; then
         random2=$(( RANDOM % range ))
-    done
+        if [ $random1 -eq $random2 ]; then
+            random2=$((random1%range))
+        fi
+    fi
     echo "${task1[$random2]}" >> ./LR/LR3/command2.txt
 }
 function task_4 {
@@ -251,7 +255,7 @@ then
         echo "Если пакет не установлен, дальнейшее исполнение скрипта приведет к ошибке, вы уверены, что хотите продолжить? (0 - нет; 1 - да)"
         read my_var_1
         if [ "$my_var_1" -eq 0 ]; then 
-            echo "Выполнение остановлено."
+            echo "Выполнение установки остановлено."
         else 
             echo "Выполняется установка. Не закрывайте терминал и не завершайте работу устройства до окончания процесса."
             sudo apt update
